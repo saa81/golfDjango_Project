@@ -5,6 +5,7 @@ from django.contrib.auth import login, authenticate
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
 
+
 def get_index(request):
     return render(request, 'ticket/index.html')
 
@@ -38,4 +39,6 @@ def profile(request):
 @login_required
 def logout(reguest):
     return render(reguest, 'ticket/logout.html')
+
+
 # Create your views here.
