@@ -7,5 +7,12 @@ class UserProfile(models.Model):
     bio = models.TextField(blank=True)
     birth_date = models.DateTimeField(null=True, blank=True)
 
+    ROLE_CHOICES = (
+        ('admin', 'Администратор'),
+        ('users',  'Обычный пользователь')
+
+    )
+    role = models.CharField(max_length=10, choices=ROLE_CHOICES, default='user')
+
     def __str__(self):
         return self.user.username

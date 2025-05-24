@@ -208,6 +208,35 @@ https://templatemo.com/tm-587-tiya-golf-club
             </section>
 
 
+            <section class="tickets-section">
+              <div class="container">
+                <div class="row">
+                  {% for ticket in tickets %}
+                    <div class="col-md-4 mb-4">
+                      <div class="card h-100">
+                        <div class="card-body">
+                           <img class="card-image" src="{{ ticket.image.url }}" alt="{{ ticket.title }}" style="width:210px; height:280px; object-fit:cover;">
+                          <h5 class="card-title">{{ ticket.title }}</h5>
+                          <p class="card-text">{{ ticket.description|truncatewords:20 }}</p>
+                          <p><strong>Цена:</strong> {{ ticket.price }} сом</p>
+                          <p><strong>Дата:</strong> {{ ticket.date }}</p>
+                          {% if user.is_authenticated and user.userprofile.role == "admin" %}
+                            <a href="#" class="btn btn-danger">Удалить</a>
+                          {% endif %}
+                          <a href="#" class="btn btn-primary">Купить</a>
+                        </div>
+                      </div>
+                    </div>
+                  {% empty %}
+                    <p>Билетов пока нет.</p>
+                  {% endfor %}
+                </div>
+              </div>
+            </section>
+
+
+
+
             <section class="about-section section-padding" id="section_2">
                 <div class="container">
                     <div class="row">
